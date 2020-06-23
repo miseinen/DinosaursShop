@@ -1,5 +1,6 @@
 ﻿namespace DinosaursShop
 {
+    using DinosaursShop.Models;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +18,8 @@
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IDinosaurRepository, DinosaurRepository>();
         }
 
         /// <summary>
