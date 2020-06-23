@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DinosaursShop</name>
+    </assembly>
+    <members>
+        <member name="T:DinosaursShop.Models.Category">
+            <summary>
+            Represents the category model properties.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Category.CategoryId">
+            <summary>
+            Gets or sets the category id.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Category.CategoryName">
+            <summary>
+            Gets or sets the category name.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Category.CategoryDescription">
+            <summary>
+            Gets or sets the category description.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Category.Dinosaurs">
+            <summary>
+            Gets the list of dinosaurs.
+            </summary>
+        </member>
+        <member name="T:DinosaursShop.Models.CategoryRepository">
+            <summary>
+            Provides methods to display category information.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.CategoryRepository.GetAllCategories">
+            <summary>
+            Gets an enumerable collection of all categories.
+            </summary>
+        </member>
+        <member name="T:DinosaursShop.Models.Dinosaur">
+            <summary>
+            Represents the dinosaur model properties.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Dinosaur.DinosaurId">
+            <summary>
+            Gets or sets the dinosaur id.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Dinosaur.Name">
+            <summary>
+            Gets or sets the dinosaur name.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Dinosaur.Description">
+            <summary>
+            Gets or sets the dinosaur description.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Dinosaur.Price">
+            <summary>
+            Gets or sets the dinosaur price.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Dinosaur.ImageUrl">
+            <summary>
+            Gets or sets the image url.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Dinosaur.ImageThumbnailUrl">
+            <summary>
+            Gets or sets the image thumbnail url.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Dinosaur.IsOnSale">
+            <summary>
+            Gets or sets a value indicating whether the dinosaur is on sale.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Dinosaur.IsInStock">
+            <summary>
+            Gets or sets a value indicating whether the dinosaur is in stock.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Dinosaur.CategoryId">
+            <summary>
+            Gets or sets the category id.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Dinosaur.Category">
+            <summary>
+            Gets or sets the category.
+            </summary>
+        </member>
+        <member name="T:DinosaursShop.Models.ICategoryRepository">
+            <summary>
+            Provides methods to display category information.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.ICategoryRepository.GetAllCategories">
+            <summary>
+            Gets an enumerable collection of all categories.
+            </summary>
+        </member>
+        <member name="T:DinosaursShop.Models.IDinosaurRepository">
+            <summary>
+            Provides methods to display dinosaur information.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.IDinosaurRepository.GetAllDinosaurs">
+            <summary>
+            Gets an enumerable collection of all dinosaurs.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.IDinosaurRepository.GetDinosaursOnSale">
+            <summary>
+            Gets an enumerable collection of dinosaurs which are on sale.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Models.IDinosaurRepository.GetDinosaurById(System.Int32)">
+            <summary>
+            Get information about dinosaur by id.
+            </summary>
+            <param name="dinosaurId">Dinosaur id.</param>
+            <returns>Dinosaur by id.</returns>
+        </member>
+        <member name="T:DinosaursShop.Program">
+            <summary>
+            Represents entrypoint methods.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Program.Main(System.String[])">
+            <summary>
+            Entrypoint of application.
+            </summary>
+            <param name="args">Command line argument.</param>
+        </member>
+        <member name="M:DinosaursShop.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            Create a host builder.
+            </summary>
+            <param name="args">Command line argument.</param>
+            <returns>Host builder.</returns>
+        </member>
+        <member name="T:DinosaursShop.Startup">
+            <summary>
+            Provides information for application start.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add services to the container.
+            </summary>
+            <param name="services">The collection of service descriptors.</param>
+        </member>
+        <member name="M:DinosaursShop.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Configure the HTTP request pipeline.
+            </summary>
+            <param name="app">The application builder.</param>
+            <param name="env">The web hosting environment.</param>
+        </member>
+    </members>
+</doc>

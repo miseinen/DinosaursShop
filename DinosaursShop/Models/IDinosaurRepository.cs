@@ -1,14 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DinosaursShop.Models
+﻿namespace DinosaursShop.Models
 {
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Provides methods to display dinosaur information.
+    /// </summary>
     public interface IDinosaurRepository
     {
+        /// <summary>
+        /// Gets an enumerable collection of all dinosaurs.
+        /// </summary>
         IEnumerable<Dinosaur> GetAllDinosaurs { get; }
+
+        /// <summary>
+        /// Gets an enumerable collection of dinosaurs which are on sale.
+        /// </summary>
         IEnumerable<Dinosaur> GetDinosaursOnSale { get; }
+
+        /// <summary>
+        /// Get information about dinosaur by id.
+        /// </summary>
+        /// <param name="dinosaurId">Dinosaur id.</param>
+        /// <returns>Dinosaur by id.</returns>
         Dinosaur GetDinosaurById(int dinosaurId);
     }
 }
