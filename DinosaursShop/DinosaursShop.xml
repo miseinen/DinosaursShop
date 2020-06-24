@@ -4,6 +4,24 @@
         <name>DinosaursShop</name>
     </assembly>
     <members>
+        <member name="T:DinosaursShop.Controllers.DinosaurController">
+            <summary>
+            Represents methods to work with dinosaurs information.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Controllers.DinosaurController.#ctor(DinosaursShop.Models.IDinosaurRepository,DinosaursShop.Models.ICategoryRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DinosaursShop.Controllers.DinosaurController"/> class.
+            </summary>
+            <param name="dinosaurRepository">Dinosaur repository.</param>
+            <param name="categoryRepository">Category repository.</param>
+        </member>
+        <member name="M:DinosaursShop.Controllers.DinosaurController.List">
+            <summary>
+            Display the collection of dinosaurs.
+            </summary>
+            <returns>Action result.</returns>
+        </member>
         <member name="T:DinosaursShop.Models.Category">
             <summary>
             Represents the category model properties.
@@ -94,6 +112,28 @@
             Gets or sets the category.
             </summary>
         </member>
+        <member name="T:DinosaursShop.Models.DinosaurRepository">
+            <summary>
+            Provides methods to display dinosaurs information.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.DinosaurRepository.GetAllDinosaurs">
+            <summary>
+            Gets an enumerable collection of all dinosaurs.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.DinosaurRepository.GetDinosaursOnSale">
+            <summary>
+            Gets an enumerable collection of dinosaurs which are on sale.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Models.DinosaurRepository.GetDinosaurById(System.Int32)">
+            <summary>
+            Get information about dinosaur by id.
+            </summary>
+            <param name="dinosaurId">Dinosaur id.</param>
+            <returns>Dinosaur by id.</returns>
+        </member>
         <member name="T:DinosaursShop.Models.ICategoryRepository">
             <summary>
             Provides methods to display category information.
@@ -161,6 +201,21 @@
             </summary>
             <param name="app">The application builder.</param>
             <param name="env">The web hosting environment.</param>
+        </member>
+        <member name="T:DinosaursShop.ViewModels.DinosaurListViewModel">
+            <summary>
+            Represents the data that displays on dinosaur list view.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.ViewModels.DinosaurListViewModel.Dinosaurs">
+            <summary>
+            Gets or sets an enumerable collection of dinosaurs.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.ViewModels.DinosaurListViewModel.CurrentCategory">
+            <summary>
+            Gets or sets a current category.
+            </summary>
         </member>
     </members>
 </doc>

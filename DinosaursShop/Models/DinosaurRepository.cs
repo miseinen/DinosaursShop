@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace DinosaursShop.Models
 {
+    /// <summary>
+    /// Provides methods to display dinosaurs information.
+    /// </summary>
     public class DinosaurRepository : IDinosaurRepository
     {
         private readonly ICategoryRepository categoryRepository = new CategoryRepository();
 
+        /// <summary>
+        /// Gets an enumerable collection of all dinosaurs.
+        /// </summary>
         public IEnumerable<Dinosaur> GetAllDinosaurs => new List<Dinosaur>
         {
             new Dinosaur
@@ -37,8 +42,16 @@ namespace DinosaursShop.Models
             },
         };
 
+        /// <summary>
+        /// Gets an enumerable collection of dinosaurs which are on sale.
+        /// </summary>
         public IEnumerable<Dinosaur> GetDinosaursOnSale => throw new NotImplementedException();
 
+        /// <summary>
+        /// Get information about dinosaur by id.
+        /// </summary>
+        /// <param name="dinosaurId">Dinosaur id.</param>
+        /// <returns>Dinosaur by id.</returns>
         public Dinosaur GetDinosaurById(int dinosaurId)
         {
             return this.GetAllDinosaurs.FirstOrDefault(d => d.DinosaurId == dinosaurId);

@@ -1,11 +1,11 @@
-﻿namespace DinosaursShop
-{
-    using DinosaursShop.Models;
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
+﻿using DinosaursShop.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
+namespace DinosaursShop
+{
     /// <summary>
     /// Provides information for application start.
     /// </summary>

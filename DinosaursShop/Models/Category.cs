@@ -1,7 +1,7 @@
-﻿namespace DinosaursShop.Models
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace DinosaursShop.Models
+{
     /// <summary>
     /// Represents the category model properties.
     /// </summary>

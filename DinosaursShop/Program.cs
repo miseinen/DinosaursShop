@@ -1,8 +1,8 @@
-﻿namespace DinosaursShop
-{
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
+namespace DinosaursShop
+{
     /// <summary>
     /// Represents entrypoint methods.
     /// </summary>

@@ -1,7 +1,7 @@
-﻿namespace DinosaursShop.Models
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace DinosaursShop.Models
+{
     /// <summary>
     /// Provides methods to display category information.
     /// </summary>

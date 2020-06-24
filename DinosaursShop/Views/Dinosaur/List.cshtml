@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DinosaursShop.Models.Dinosaur>
+﻿@model DinosaursShop.ViewModels.DinosaurListViewModel
 
 <html>
 <head>
@@ -8,13 +8,14 @@
     <title>Dinosaurs Shop</title>
 </head>
 <body>
-    @foreach (var dinosaur in Model)
-	{
-    <div>
-        <h2>@dinosaur.Name</h2>
-        <h3>@dinosaur.Price.ToString("c")</h3>
-        <h4>@dinosaur.Category.CategoryName</h4>
-    </div>
-	}
+    <h1>@Model.CurrentCategory.</h1>
+    @foreach (var dinosaur in Model.Dinosaurs)
+    {
+        <div>
+            <h2>@dinosaur.Name</h2>
+            <h3>@dinosaur.Price.ToString("c")</h3>
+            <h4>@dinosaur.Category.CategoryName</h4>
+        </div>
+    }
 </body>
 </html>
