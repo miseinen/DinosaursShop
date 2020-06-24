@@ -47,7 +47,7 @@ namespace DinosaursShop.Models
         /// </summary>
         public IEnumerable<Dinosaur> GetDinosaursOnSale => throw new NotImplementedException();
 
-        /// <summary>
+         /// <summary>
         /// Get information about dinosaur by id.
         /// </summary>
         /// <param name="dinosaurId">Dinosaur id.</param>
