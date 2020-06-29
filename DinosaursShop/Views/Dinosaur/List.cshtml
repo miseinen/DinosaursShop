@@ -1,17 +1,16 @@
 ﻿@model DinosaurListViewModel
 
-<h1>@Model.CurrentCategory.</h1>
-@foreach (var dinosaur in Model.Dinosaurs)
-{
-    <div class="col-sm-4 col-ld-4 col-md-4">
-        <div class="thumbnail">
-            <img scr="@dinosaur.ImageThumbnailUrl" alt="image for dinosaurs shop"/>
+<h1>@Model.CurrentCategory</h1>
+    @foreach (var dinosaur in Model.Dinosaurs)
+    {
+        <div class="col-sm-4 col-ld-4 col-md-4">
+            <div class="thumbnail">
+                <img src="@Url.Content(dinosaur.ImageThumbnailUrl)" alt="image of @dinosaur.Name" />
+                <div class="caption">
+                    <h3 class="pull-right">@dinosaur.Price.ToString("c")</h3>
+                    <h3>@dinosaur.Name</h3>
+                    <p>@dinosaur.Description</p>
+                </div>
+            </div>
         </div>
-        <div class="caption">
-            <h3 class="pull-right">@dinosaur.Price.ToString("c")</h3>
-            <h3>@dinosaur.Name</h3>
-            <p>@dinosaur.Description</p>
-        </div>
-        <h4>@dinosaur.Category.CategoryName</h4>
-    </div>
-}
+    }

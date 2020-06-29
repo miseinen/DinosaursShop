@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace DinosaursShop.Models
 {
@@ -9,43 +9,38 @@ namespace DinosaursShop.Models
     /// </summary>
     public class DinosaurRepository : IDinosaurRepository
     {
-        private readonly ICategoryRepository categoryRepository = new CategoryRepository();
+        private readonly AppDbContext appDbContext;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DinosaurRepository"/> class.
+        /// </summary>
+        /// /// <param name="appDbContext">Application Db context.</param>
+        public DinosaurRepository(AppDbContext appDbContext)
+        {
+            this.appDbContext = appDbContext;
+        }
 
         /// <summary>
         /// Gets an enumerable collection of all dinosaurs.
         /// </summary>
-        public IEnumerable<Dinosaur> GetAllDinosaurs => new List<Dinosaur>
+        public IEnumerable<Dinosaur> GetAllDinosaurs
         {
-            new Dinosaur
+            get
             {
-                DinosaurId = 1, Name = "Allosaurus", Price = 1200M,
-                Description = "Fast", Category = this.categoryRepository.GetAllCategories.ToList()[0],
-                ImageUrl = new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Allosaurus_Juvenile_Reconstruction.jpg/1024px-Allosaurus_Juvenile_Reconstruction.jpg"),
-                ImageThumbnailUrl = new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Allosaurus_Juvenile_Reconstruction.jpg/220px-Allosaurus_Juvenile_Reconstruction.jpg"),
-                IsInStock = true, IsOnSale = false,
-            },
-            new Dinosaur
-            {
-                DinosaurId = 2, Name = "Brachiosaurus", Price = 1500M,
-                Description = "Big", Category = this.categoryRepository.GetAllCategories.ToList()[2],
-                ImageUrl = new Uri("https://upload.wikimedia.org/wikipedia/commons/c/cf/Brachiosaurus_NT_new.jpg"),
-                ImageThumbnailUrl = new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Brachiosaurus_NT_new.jpg/220px-Brachiosaurus_NT_new.jpg"),
-                IsInStock = true, IsOnSale = false,
-            },
-            new Dinosaur
-            {
-                DinosaurId = 3, Name = "Velociraptor", Price = 500M,
-                Description = "Cute", Category = this.categoryRepository.GetAllCategories.ToList()[1],
-                ImageUrl = new Uri("https://en.wikipedia.org/wiki/Velociraptor#/media/File:Velociraptor_Restoration.png"),
-                ImageThumbnailUrl = new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Velociraptor_Restoration.png/220px-Velociraptor_Restoration.png"),
-                IsInStock = true, IsOnSale = false,
-            },
-        };
+                return this.appDbContext.Dinosaurs.Include(d => d.Category);
+            }
+        }
 
         /// <summary>
         /// Gets an enumerable collection of dinosaurs which are on sale.
         /// </summary>
-        public IEnumerable<Dinosaur> GetDinosaursOnSale => throw new NotImplementedException();
+        public IEnumerable<Dinosaur> GetDinosaursOnSale
+        {
+            get
+            {
+                return this.appDbContext.Dinosaurs.Include(d => d.Category).Where(p => p.IsOnSale);
+            }
+        }
 
          /// <summary>
         /// Get information about dinosaur by id.
@@ -54,7 +49,7 @@ namespace DinosaursShop.Models
         /// <returns>Dinosaur by id.</returns>
         public Dinosaur GetDinosaurById(int dinosaurId)
         {
-            return this.GetAllDinosaurs.FirstOrDefault(d => d.DinosaurId == dinosaurId);
+            return this.appDbContext.Dinosaurs.FirstOrDefault(d => d.DinosaurId == dinosaurId);
         }
     }
 }

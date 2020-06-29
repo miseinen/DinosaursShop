@@ -28,12 +28,12 @@
         /// <summary>
         /// Gets or sets the image url.
         /// </summary>
-        public System.Uri ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the image thumbnail url.
         /// </summary>
-        public System.Uri ImageThumbnailUrl { get; set; }
+        public string ImageThumbnailUrl { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the dinosaur is on sale.

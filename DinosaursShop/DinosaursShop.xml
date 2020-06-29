@@ -22,6 +22,51 @@
             </summary>
             <returns>Action result.</returns>
         </member>
+        <member name="T:DinosaursShop.Migrations.InitialMigration">
+            <summary>
+            Represents details of performing the migration.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Migrations.InitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            Upgrade database from current state to the state expected by current code migration.
+            </summary>
+            <param name="migrationBuilder">Migration builder.</param>
+        </member>
+        <member name="M:DinosaursShop.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            Remove all the changes from the current migration and revert database to the state expected
+            by the previous migration.
+            </summary>
+            <param name="migrationBuilder">Migration builder.</param>
+        </member>
+        <member name="T:DinosaursShop.Models.AppDbContext">
+            <summary>
+            Represents a session with the database.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Models.AppDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{DinosaursShop.Models.AppDbContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:DinosaursShop.Models.AppDbContext"/> class.
+            </summary>
+            <param name="options">The options to be used by a DbContext.</param>
+        </member>
+        <member name="P:DinosaursShop.Models.AppDbContext.Dinosaurs">
+            <summary>
+            Gets or sets a DbSet of the <see cref="T:DinosaursShop.Models.Dinosaur"/> class.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.AppDbContext.Categories">
+            <summary>
+            Gets or sets a DbSet of the <see cref="T:DinosaursShop.Models.Category"/> class.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Models.AppDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Call when app context is first created to build the model and its mappings in memory.
+            </summary>
+            <param name="modelBuilder">Model builder.</param>
+        </member>
         <member name="T:DinosaursShop.Models.Category">
             <summary>
             Represents the category model properties.
@@ -51,6 +96,12 @@
             <summary>
             Provides methods to display category information.
             </summary>
+        </member>
+        <member name="M:DinosaursShop.Models.CategoryRepository.#ctor(DinosaursShop.Models.AppDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DinosaursShop.Models.CategoryRepository"/> class.
+            </summary>
+            /// <param name="appDbContext">Application Db context.</param>
         </member>
         <member name="P:DinosaursShop.Models.CategoryRepository.GetAllCategories">
             <summary>
@@ -116,6 +167,12 @@
             <summary>
             Provides methods to display dinosaurs information.
             </summary>
+        </member>
+        <member name="M:DinosaursShop.Models.DinosaurRepository.#ctor(DinosaursShop.Models.AppDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DinosaursShop.Models.DinosaurRepository"/> class.
+            </summary>
+            /// <param name="appDbContext">Application Db context.</param>
         </member>
         <member name="P:DinosaursShop.Models.DinosaurRepository.GetAllDinosaurs">
             <summary>
@@ -187,6 +244,17 @@
         <member name="T:DinosaursShop.Startup">
             <summary>
             Provides information for application start.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DinosaursShop.Startup"/> class.
+            </summary>
+            <param name="configuration">Configuration properties.</param>
+        </member>
+        <member name="P:DinosaursShop.Startup.Configuration">
+            <summary>
+            Gets a configuration properties.
             </summary>
         </member>
         <member name="M:DinosaursShop.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">

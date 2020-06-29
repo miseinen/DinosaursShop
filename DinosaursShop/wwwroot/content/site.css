@@ -20,7 +20,6 @@
 }
 
 .caption {
-    height: 130px;
     overflow: hidden;
 }
 
@@ -38,6 +37,9 @@
 }
 
 .thumbnail {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
     padding: 0;
 }
 
