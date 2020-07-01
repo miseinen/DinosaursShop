@@ -34,5 +34,22 @@ namespace DinosaursShop.Controllers
             dinosaurListViewModel.CurrentCategory = "Bestsellers";
             return this.View(dinosaurListViewModel);
         }
+
+        /// <summary>
+        /// Display ditails about the selected dinosaur.
+        /// </summary>
+        /// /// <param name="id">Dinosaur ID.</param>
+        /// <returns>Action result.</returns>
+        public IActionResult Details(int id)
+        {
+            var dinosaur = this.dinosaurRepository.GetDinosaurById(id);
+
+            if (dinosaur == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(dinosaur);
+        }
     }
 }

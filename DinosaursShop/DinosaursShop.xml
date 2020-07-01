@@ -22,6 +22,30 @@
             </summary>
             <returns>Action result.</returns>
         </member>
+        <member name="M:DinosaursShop.Controllers.DinosaurController.Details(System.Int32)">
+            <summary>
+            Display ditails about the selected dinosaur.
+            </summary>
+            /// <param name="id">Dinosaur ID.</param>
+            <returns>Action result.</returns>
+        </member>
+        <member name="T:DinosaursShop.Controllers.HomeController">
+            <summary>
+            Represents methods to work with home information.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Controllers.HomeController.#ctor(DinosaursShop.Models.IDinosaurRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DinosaursShop.Controllers.HomeController"/> class.
+            </summary>
+            <param name="dinosaurRepository">Dinosaur repository.</param>
+        </member>
+        <member name="M:DinosaursShop.Controllers.HomeController.Index">
+            <summary>
+            Display the default information.
+            </summary>
+            <returns>Action result.</returns>
+        </member>
         <member name="T:DinosaursShop.Migrations.InitialMigration">
             <summary>
             Represents details of performing the migration.
@@ -283,6 +307,16 @@
         <member name="P:DinosaursShop.ViewModels.DinosaurListViewModel.CurrentCategory">
             <summary>
             Gets or sets a current category.
+            </summary>
+        </member>
+        <member name="T:DinosaursShop.ViewModels.HomeViewModel">
+            <summary>
+            Represents the data that displays on home controller view.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.ViewModels.HomeViewModel.DinosaurOnSale">
+            <summary>
+            Gets or sets an enumerable collection of dinosaurs.
             </summary>
         </member>
     </members>
