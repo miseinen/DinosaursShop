@@ -4,6 +4,40 @@
         <name>DinosaursShop</name>
     </assembly>
     <members>
+        <member name="T:DinosaursShop.Components.CategoryMenu">
+            <summary>
+            Represents the logic for generating the category menu model.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Components.CategoryMenu.#ctor(DinosaursShop.Models.ICategoryRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DinosaursShop.Components.CategoryMenu"/> class.
+            </summary>
+            <param name="categoryRepository">Category repository.</param>
+        </member>
+        <member name="M:DinosaursShop.Components.CategoryMenu.Invoke">
+            <summary>
+            Invoke the logic for the category menu.
+            </summary>
+            <returns>View component result.</returns>
+        </member>
+        <member name="T:DinosaursShop.Components.ShoppingCartSummary">
+            <summary>
+            Represents the logic for generating the shopping cart summary model.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Components.ShoppingCartSummary.#ctor(DinosaursShop.Models.ShoppingCart)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DinosaursShop.Components.ShoppingCartSummary"/> class.
+            </summary>
+            <param name="shoppingCart">Shopping cart.</param>
+        </member>
+        <member name="M:DinosaursShop.Components.ShoppingCartSummary.Invoke">
+            <summary>
+            Invoke the logic for the shopping cart summary.
+            </summary>
+            <returns>View component result.</returns>
+        </member>
         <member name="T:DinosaursShop.Controllers.DinosaurController">
             <summary>
             Represents methods to work with dinosaurs information.
@@ -16,17 +50,18 @@
             <param name="dinosaurRepository">Dinosaur repository.</param>
             <param name="categoryRepository">Category repository.</param>
         </member>
-        <member name="M:DinosaursShop.Controllers.DinosaurController.List">
+        <member name="M:DinosaursShop.Controllers.DinosaurController.List(System.String)">
             <summary>
             Display the collection of dinosaurs.
             </summary>
-            <returns>Action result.</returns>
+            <param name="category">Dinosaur category.</param>
+            <returns>View result.</returns>
         </member>
         <member name="M:DinosaursShop.Controllers.DinosaurController.Details(System.Int32)">
             <summary>
             Display ditails about the selected dinosaur.
             </summary>
-            /// <param name="id">Dinosaur ID.</param>
+            <param name="id">Dinosaur ID.</param>
             <returns>Action result.</returns>
         </member>
         <member name="T:DinosaursShop.Controllers.HomeController">
@@ -358,6 +393,12 @@
         <member name="M:DinosaursShop.Models.ShoppingCart.GetShopppingCartTotal">
             <summary>
             Get the total cost of the shopping cart.
+            </summary>
+            <returns>Total cost.</returns>
+        </member>
+        <member name="M:DinosaursShop.Models.ShoppingCart.GetShopppingCartTotalAmount">
+            <summary>
+            Get the total amount of dinosaurs in the shopping cart.
             </summary>
             <returns>Total cost.</returns>
         </member>

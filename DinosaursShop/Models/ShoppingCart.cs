@@ -147,5 +147,21 @@ namespace DinosaursShop.Models
 
             return total;
         }
+
+        /// <summary>
+        /// Get the total amount of dinosaurs in the shopping cart.
+        /// </summary>
+        /// <returns>Total cost.</returns>
+        public decimal GetShopppingCartTotalAmount()
+        {
+            int totalAmount = 0;
+
+            totalAmount = this.appDbContext.ShoppingCartItems
+                .Where(s => s.ShoppingCartId == this.ShoppingCartId)
+                .Select(d => totalAmount + d.Amount)
+                .Sum();
+
+            return totalAmount;
+        }
     }
 }

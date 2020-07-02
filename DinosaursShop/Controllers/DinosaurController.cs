@@ -1,4 +1,7 @@
-﻿using DinosaursShop.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using DinosaursShop.Models;
 using DinosaursShop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,19 +29,41 @@ namespace DinosaursShop.Controllers
         /// <summary>
         /// Display the collection of dinosaurs.
         /// </summary>
-        /// <returns>Action result.</returns>
-        public IActionResult List()
+        /// <param name="category">Dinosaur category.</param>
+        /// <returns>View result.</returns>
+        public ViewResult List(string category)
         {
-            DinosaurListViewModel dinosaurListViewModel = new DinosaurListViewModel();
-            dinosaurListViewModel.Dinosaurs = this.dinosaurRepository.GetAllDinosaurs;
-            dinosaurListViewModel.CurrentCategory = "Bestsellers";
+            string selectedCategory;
+            IEnumerable<Dinosaur> dinosaurs;
+
+            if (string.IsNullOrEmpty(category))
+            {
+                dinosaurs = this.dinosaurRepository.GetAllDinosaurs.OrderBy(c => c.DinosaurId);
+                selectedCategory = "All Dinosaurs";
+            }
+            else
+            {
+                var stringComparison = StringComparison.InvariantCulture;
+                dinosaurs = this.dinosaurRepository.GetAllDinosaurs
+                    .Where(c => string.Equals(c.Category.CategoryName, category, stringComparison));
+
+                selectedCategory = this.categoryRepository.GetAllCategories
+                    .FirstOrDefault(c => string.Equals(c.CategoryName, category, stringComparison))?.CategoryName;
+            }
+
+            var dinosaurListViewModel = new DinosaurListViewModel
+            {
+                Dinosaurs = dinosaurs,
+                CurrentCategory = selectedCategory,
+            };
+
             return this.View(dinosaurListViewModel);
         }
 
         /// <summary>
         /// Display ditails about the selected dinosaur.
         /// </summary>
-        /// /// <param name="id">Dinosaur ID.</param>
+        /// <param name="id">Dinosaur ID.</param>
         /// <returns>Action result.</returns>
         public IActionResult Details(int id)
         {

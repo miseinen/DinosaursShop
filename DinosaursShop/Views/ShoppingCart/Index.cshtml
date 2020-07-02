@@ -16,7 +16,7 @@
         <tr>
             <td class="text-center">@item.Amount</td>
             <td class="text-left">@item.Dinosaur.Name</td>
-            <td class="text-center">@item.Dinosaur.Price.ToString("c")</td>
+            <td class="text-right">@item.Dinosaur.Price.ToString("c")</td>
             <td class="text-right">@((item.Amount * item.Dinosaur.Price).ToString("c"))</td>
         </tr>
         }
