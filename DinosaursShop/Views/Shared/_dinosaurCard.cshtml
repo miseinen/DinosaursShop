@@ -1,7 +1,7 @@
 ﻿@model Dinosaur
 
 <div class="col-sm-4 col-ld-4 col-md-4">
-    <div class="thumbnail-list">
+    <div class="thumbnail">
         <img src="@Url.Content(Model.ImageThumbnailUrl)" alt="image of @Model.Name" />
         <div class="caption">
             <h3 class="pull-right">@Model.Price.ToString("c")</h3>
@@ -10,6 +10,14 @@
                    asp-route-id="@Model.DinosaurId">@Model.Name</a>
             </h3>
             <p>@Model.Description</p>
+        </div>
+        <div class="addToCart">
+            <p class="button">
+                <a class="btn btn-primary"
+                   asp-controller="ShoppingCart"
+                   asp-action="AddToShoppingCart"
+                   asp-route-dinosaurId="@Model.DinosaurId">Add to Cart</a>
+            </p>
         </div>
     </div>
 </div>

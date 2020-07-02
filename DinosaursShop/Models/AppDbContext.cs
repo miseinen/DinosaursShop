@@ -28,6 +28,11 @@ namespace DinosaursShop.Models
         public DbSet<Category> Categories { get; set; }
 
         /// <summary>
+        /// Gets or sets a DbSet of the <see cref="ShoppingCartItem"/> class.
+        /// </summary>
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+
+        /// <summary>
         /// Call when app context is first created to build the model and its mappings in memory.
         /// </summary>
         /// <param name="modelBuilder">Model builder.</param>

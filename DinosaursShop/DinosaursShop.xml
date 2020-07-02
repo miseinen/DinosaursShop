@@ -46,6 +46,38 @@
             </summary>
             <returns>Action result.</returns>
         </member>
+        <member name="T:DinosaursShop.Controllers.ShoppingCartController">
+            <summary>
+            Represents methods to work with shopping cart information.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Controllers.ShoppingCartController.#ctor(DinosaursShop.Models.IDinosaurRepository,DinosaursShop.Models.ShoppingCart)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DinosaursShop.Controllers.ShoppingCartController"/> class.
+            </summary>
+            <param name="dinosaurRepository">Dinosaur repository.</param>
+            /// <param name="shoppingCart">Shopping cart.</param>
+        </member>
+        <member name="M:DinosaursShop.Controllers.ShoppingCartController.Index">
+            <summary>
+            Display the shopping cart default information.
+            </summary>
+            <returns>View result.</returns>
+        </member>
+        <member name="M:DinosaursShop.Controllers.ShoppingCartController.AddToShoppingCart(System.Int32)">
+            <summary>
+            Add the selected dinosaur to the cart.
+            </summary>
+            <param name="dinosaurId">Dinosaur id.</param>
+            <returns>Redirect to action result.</returns>
+        </member>
+        <member name="M:DinosaursShop.Controllers.ShoppingCartController.RemoveFromShoppingCart(System.Int32)">
+            <summary>
+            Remove the selected dinosaur from the cart.
+            </summary>
+            <param name="dinosaurId">Dinosaur id.</param>
+            <returns>Redirect to action result.</returns>
+        </member>
         <member name="T:DinosaursShop.Migrations.InitialMigration">
             <summary>
             Represents details of performing the migration.
@@ -58,6 +90,24 @@
             <param name="migrationBuilder">Migration builder.</param>
         </member>
         <member name="M:DinosaursShop.Migrations.InitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            Remove all the changes from the current migration and revert database to the state expected
+            by the previous migration.
+            </summary>
+            <param name="migrationBuilder">Migration builder.</param>
+        </member>
+        <member name="T:DinosaursShop.Migrations.AddingShoppingCartItem">
+            <summary>
+            Represents details of performing the migration.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Migrations.AddingShoppingCartItem.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            Upgrade database from current state to the state expected by current code migration.
+            </summary>
+            <param name="migrationBuilder">Migration builder.</param>
+        </member>
+        <member name="M:DinosaursShop.Migrations.AddingShoppingCartItem.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <summary>
             Remove all the changes from the current migration and revert database to the state expected
             by the previous migration.
@@ -83,6 +133,11 @@
         <member name="P:DinosaursShop.Models.AppDbContext.Categories">
             <summary>
             Gets or sets a DbSet of the <see cref="T:DinosaursShop.Models.Category"/> class.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.AppDbContext.ShoppingCartItems">
+            <summary>
+            Gets or sets a DbSet of the <see cref="T:DinosaursShop.Models.ShoppingCartItem"/> class.
             </summary>
         </member>
         <member name="M:DinosaursShop.Models.AppDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
@@ -247,6 +302,90 @@
             <param name="dinosaurId">Dinosaur id.</param>
             <returns>Dinosaur by id.</returns>
         </member>
+        <member name="T:DinosaursShop.Models.ShoppingCart">
+            <summary>
+            Represents the methods to work with the shopping cart information.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Models.ShoppingCart.#ctor(DinosaursShop.Models.AppDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DinosaursShop.Models.ShoppingCart"/> class.
+            </summary>
+            <param name="appDbContext">Application Db Context.</param>
+        </member>
+        <member name="P:DinosaursShop.Models.ShoppingCart.ShoppingCartId">
+            <summary>
+            Gets or sets a shopping cart id.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.ShoppingCart.ShoppingCartItems">
+            <summary>
+            Gets or sets a list of shopping cart items.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Models.ShoppingCart.GetCart(System.IServiceProvider)">
+            <summary>
+            Get current shopping cart or create new cart.
+            </summary>
+            <param name="services">The collection of service descriptors.</param>
+            <returns>Shopping cart.</returns>
+        </member>
+        <member name="M:DinosaursShop.Models.ShoppingCart.AddToCart(DinosaursShop.Models.Dinosaur,System.Int32)">
+            <summary>
+            Add a shopping cart item to the shopping cart.
+            </summary>
+            <param name="dinosaur">Specimen of dinosaur.</param>
+            <param name="amount">Amount of the dinosaurs.</param>
+        </member>
+        <member name="M:DinosaursShop.Models.ShoppingCart.RemoveFromCart(DinosaursShop.Models.Dinosaur)">
+            <summary>
+            Remove a shopping cart item from the shopping cart.
+            </summary>
+            <param name="dinosaur">Specimen of dinosaur.</param>
+            <returns>Amount of the dinosaurs.</returns>
+        </member>
+        <member name="M:DinosaursShop.Models.ShoppingCart.GetAllShoppingCartItems">
+            <summary>
+            Get a collection of the shopping cart items.
+            </summary>
+            <returns>A collection of shopping cart items.</returns>
+        </member>
+        <member name="M:DinosaursShop.Models.ShoppingCart.ClearCart">
+            <summary>
+            Remove all shopping cart items.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Models.ShoppingCart.GetShopppingCartTotal">
+            <summary>
+            Get the total cost of the shopping cart.
+            </summary>
+            <returns>Total cost.</returns>
+        </member>
+        <member name="T:DinosaursShop.Models.ShoppingCartItem">
+            <summary>
+            Represents shopping cart item properties.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.ShoppingCartItem.ShoppingCartItemId">
+            <summary>
+            Gets or sets a shopping cart item id.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.ShoppingCartItem.ShoppingCartId">
+            <summary>
+            Gets or sets a shopping cart id.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.ShoppingCartItem.Dinosaur">
+            <summary>
+            Gets or sets a dinosaur.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.ShoppingCartItem.Amount">
+            <summary>
+            Gets or sets amount of dinosaurs.
+            </summary>
+        </member>
         <member name="T:DinosaursShop.Program">
             <summary>
             Represents entrypoint methods.
@@ -317,6 +456,21 @@
         <member name="P:DinosaursShop.ViewModels.HomeViewModel.DinosaurOnSale">
             <summary>
             Gets or sets an enumerable collection of dinosaurs.
+            </summary>
+        </member>
+        <member name="T:DinosaursShop.ViewModels.ShoppingCartViewModel">
+            <summary>
+            Represents the data that displays on shopping cart view.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.ViewModels.ShoppingCartViewModel.ShoppingCart">
+            <summary>
+            Gets or sets a shopping cart.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.ViewModels.ShoppingCartViewModel.ShoppingCartTotal">
+            <summary>
+            Gets or sets the shopping cart total.
             </summary>
         </member>
     </members>

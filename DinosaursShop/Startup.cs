@@ -39,6 +39,10 @@ namespace DinosaursShop
             services.AddControllersWithViews();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IDinosaurRepository, DinosaurRepository>();
+            services.AddScoped<ShoppingCart>(s => ShoppingCart.GetCart(s));
+
+            services.AddHttpContextAccessor();
+            services.AddSession();
         }
 
         /// <summary>
@@ -55,6 +59,7 @@ namespace DinosaursShop
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
