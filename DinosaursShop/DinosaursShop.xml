@@ -38,6 +38,17 @@
             </summary>
             <returns>View component result.</returns>
         </member>
+        <member name="T:DinosaursShop.Controllers.ContactController">
+            <summary>
+            Represents methods to work with contact data.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Controllers.ContactController.Index">
+            <summary>
+            Display the default information.
+            </summary>
+            <returns>Action result.</returns>
+        </member>
         <member name="T:DinosaursShop.Controllers.DinosaurController">
             <summary>
             Represents methods to work with dinosaurs information.
@@ -78,6 +89,37 @@
         <member name="M:DinosaursShop.Controllers.HomeController.Index">
             <summary>
             Display the default information.
+            </summary>
+            <returns>Action result.</returns>
+        </member>
+        <member name="T:DinosaursShop.Controllers.OrderController">
+            <summary>
+            Represents methods to work with order information.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Controllers.OrderController.#ctor(DinosaursShop.Models.IOrderRepository,DinosaursShop.Models.ShoppingCart)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DinosaursShop.Controllers.OrderController"/> class.
+            </summary>
+            <param name="orderRepository">Order repository.</param>
+            <param name="shoppingCart">Shopping cart.</param>
+        </member>
+        <member name="M:DinosaursShop.Controllers.OrderController.Checkout">
+            <summary>
+            Check an order information.
+            </summary>
+            <returns>Action result.</returns>
+        </member>
+        <member name="M:DinosaursShop.Controllers.OrderController.Checkout(DinosaursShop.Models.Order)">
+            <summary>
+            Check an order information.
+            </summary>
+            <param name="order">Order.</param>
+            <returns>Action result.</returns>
+        </member>
+        <member name="M:DinosaursShop.Controllers.OrderController.CheckoutComplete">
+            <summary>
+            Display an information when checkout is complete.
             </summary>
             <returns>Action result.</returns>
         </member>
@@ -149,6 +191,24 @@
             </summary>
             <param name="migrationBuilder">Migration builder.</param>
         </member>
+        <member name="T:DinosaursShop.Migrations.AddingAttributes">
+            <summary>
+            Represents details of performing the migration.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Migrations.AddingAttributes.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            Upgrade database from current state to the state expected by current code migration.
+            </summary>
+            <param name="migrationBuilder">Migration builder.</param>
+        </member>
+        <member name="M:DinosaursShop.Migrations.AddingAttributes.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            Remove all the changes from the current migration and revert database to the state expected
+            by the previous migration.
+            </summary>
+            <param name="migrationBuilder">Migration builder.</param>
+        </member>
         <member name="T:DinosaursShop.Models.AppDbContext">
             <summary>
             Represents a session with the database.
@@ -173,6 +233,16 @@
         <member name="P:DinosaursShop.Models.AppDbContext.ShoppingCartItems">
             <summary>
             Gets or sets a DbSet of the <see cref="T:DinosaursShop.Models.ShoppingCartItem"/> class.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.AppDbContext.Orders">
+            <summary>
+            Gets or sets a DbSet of the <see cref="P:DinosaursShop.Models.AppDbContext.Orders"/> class.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.AppDbContext.OrderDetails">
+            <summary>
+            Gets or sets a DbSet of the <see cref="P:DinosaursShop.Models.AppDbContext.OrderDetails"/> class.
             </summary>
         </member>
         <member name="M:DinosaursShop.Models.AppDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
@@ -337,6 +407,135 @@
             <param name="dinosaurId">Dinosaur id.</param>
             <returns>Dinosaur by id.</returns>
         </member>
+        <member name="T:DinosaursShop.Models.IOrderRepository">
+            <summary>
+            Provides methods to display order information.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Models.IOrderRepository.CreateOrder(DinosaursShop.Models.Order)">
+            <summary>
+            Create an order.
+            </summary>
+            <param name="order">Order.</param>
+        </member>
+        <member name="T:DinosaursShop.Models.Order">
+            <summary>
+            Represents the order model properties.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Order.OrderId">
+            <summary>
+            Gets or sets an order id.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Order.FirstName">
+            <summary>
+            Gets or sets a first name.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Order.LastName">
+            <summary>
+            Gets or sets a last name.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Order.Address">
+            <summary>
+            Gets or sets an address.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Order.City">
+            <summary>
+            Gets or sets a city.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Order.State">
+            <summary>
+            Gets or sets a sate.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Order.ZipCode">
+            <summary>
+            Gets or sets a zipcode.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Order.PhoneNumber">
+            <summary>
+            Gets or sets a phone number.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Order.OrderDetails">
+            <summary>
+            Gets or sets an enumerable collection of order details.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Order.OrderTotal">
+            <summary>
+            Gets or sets the total number of orders.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.Order.OrderPlaced">
+            <summary>
+            Gets or sets the date when an order was placed.
+            </summary>
+        </member>
+        <member name="T:DinosaursShop.Models.OrderDetails">
+            <summary>
+            Represents the order details properties.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.OrderDetails.OrderDetailId">
+            <summary>
+            Gets or sets an order detail id.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.OrderDetails.OrderId">
+            <summary>
+            Gets or sets an order id.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.OrderDetails.DinosaurId">
+            <summary>
+            Gets or sets an id of ordered dinosaur.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.OrderDetails.Dinosaur">
+            <summary>
+            Gets or sets the ordered dinosaur.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.OrderDetails.Amount">
+            <summary>
+            Gets or sets the ordered amount.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.OrderDetails.Price">
+            <summary>
+            Gets or sets the ordered price.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.Models.OrderDetails.Order">
+            <summary>
+            Gets or sets an order.
+            </summary>
+        </member>
+        <member name="T:DinosaursShop.Models.OrderRepository">
+            <summary>
+            Provides methods to display order information.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Models.OrderRepository.#ctor(DinosaursShop.Models.AppDbContext,DinosaursShop.Models.ShoppingCart)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DinosaursShop.Models.OrderRepository"/> class.
+            </summary>
+            <param name="appDbContext">Application Db context.</param>
+            <param name="shoppingCart">Shopping cart.</param>
+        </member>
+        <member name="M:DinosaursShop.Models.OrderRepository.CreateOrder(DinosaursShop.Models.Order)">
+            <summary>
+            Create an order.
+            </summary>
+            <param name="order">Order.</param>
+        </member>
         <member name="T:DinosaursShop.Models.ShoppingCart">
             <summary>
             Represents the methods to work with the shopping cart information.
@@ -473,6 +672,28 @@
             </summary>
             <param name="app">The application builder.</param>
             <param name="env">The web hosting environment.</param>
+        </member>
+        <member name="T:DinosaursShop.TagHelpers.EmailTagHelper">
+            <summary>
+            Represents server-side code to participate in creating and rendering HTML elements in Razor files for contact email.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.TagHelpers.EmailTagHelper.Address">
+            <summary>
+            Gets or sets an address.
+            </summary>
+        </member>
+        <member name="P:DinosaursShop.TagHelpers.EmailTagHelper.LinkText">
+            <summary>
+            Gets or sets a link text.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.TagHelpers.EmailTagHelper.Process(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext,Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput)">
+            <summary>
+            Process an email contact data.
+            </summary>
+            <param name="context">Tag helper context.</param>
+            <param name="output">Tag helper output.</param>
         </member>
         <member name="T:DinosaursShop.ViewModels.DinosaurListViewModel">
             <summary>

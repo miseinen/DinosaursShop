@@ -40,6 +40,7 @@ namespace DinosaursShop
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IDinosaurRepository, DinosaurRepository>();
             services.AddScoped<ShoppingCart>(s => ShoppingCart.GetCart(s));
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
             services.AddHttpContextAccessor();
             services.AddSession();
