@@ -123,6 +123,12 @@
             </summary>
             <returns>Action result.</returns>
         </member>
+        <member name="M:DinosaursShop.Controllers.OrderController.CartEmpty">
+            <summary>
+            Display an information when cart is empty.
+            </summary>
+            <returns>Action result.</returns>
+        </member>
         <member name="T:DinosaursShop.Controllers.ShoppingCartController">
             <summary>
             Represents methods to work with shopping cart information.

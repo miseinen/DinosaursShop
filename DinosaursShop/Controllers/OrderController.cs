@@ -10,6 +10,9 @@ namespace DinosaursShop.Controllers
     [Authorize]
     public class OrderController : Controller
     {
+        private const string CheckoutCompleteAction = "CheckoutComplete";
+        private const string CartEmptyAction = "CartEmpty";
+
         private readonly IOrderRepository orderRepository;
         private readonly ShoppingCart shoppingCart;
 
@@ -30,6 +33,13 @@ namespace DinosaursShop.Controllers
         /// <returns>Action result.</returns>
         public IActionResult Checkout()
         {
+            this.shoppingCart.ShoppingCartItems = this.shoppingCart.GetAllShoppingCartItems();
+
+            if (this.shoppingCart.ShoppingCartItems.Count == 0)
+            {
+                return this.RedirectToAction(CartEmptyAction);
+            }
+
             return this.View();
         }
 
@@ -41,18 +51,11 @@ namespace DinosaursShop.Controllers
         [HttpPost]
         public IActionResult Checkout(Order order)
         {
-            this.shoppingCart.ShoppingCartItems = this.shoppingCart.GetAllShoppingCartItems();
-
-            if (this.shoppingCart.ShoppingCartItems.Count == 0)
-            {
-                this.ModelState.AddModelError(" ", "Your cart is empty");
-            }
-
             if (this.ModelState.IsValid)
             {
                 this.orderRepository.CreateOrder(order);
                 this.shoppingCart.ClearCart();
-                return this.RedirectToAction("CheckOutComplete");
+                return this.RedirectToAction(CheckoutCompleteAction);
             }
 
             return this.View(order);
@@ -65,6 +68,17 @@ namespace DinosaursShop.Controllers
         public IActionResult CheckoutComplete()
         {
             this.ViewBag.CheckoutCompleteMessage = "Thank you for your order. Enjoy your dinosaurs.";
+
+            return this.View();
+        }
+
+        /// <summary>
+        /// Display an information when cart is empty.
+        /// </summary>
+        /// <returns>Action result.</returns>
+        public IActionResult CartEmpty()
+        {
+            this.ViewBag.CheckoutCompleteMessage = "Your cart is empty";
 
             return this.View();
         }
