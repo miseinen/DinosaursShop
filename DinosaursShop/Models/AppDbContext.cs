@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DinosaursShop.Models
@@ -6,7 +8,7 @@ namespace DinosaursShop.Models
     /// <summary>
     /// Represents a session with the database.
     /// </summary>
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AppDbContext"/> class.
@@ -45,36 +47,36 @@ namespace DinosaursShop.Models
         /// <summary>
         /// Call when app context is first created to build the model and its mappings in memory.
         /// </summary>
-        /// <param name="modelBuilder">Model builder.</param>
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        /// <param name="builder">Model builder.</param>
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            if (modelBuilder == null)
+            if (builder == null)
             {
-                throw new ArgumentNullException(nameof(modelBuilder));
+                throw new ArgumentNullException(nameof(builder));
             }
 
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(builder);
 
-            modelBuilder.Entity<Category>().HasData(new Category
+            builder.Entity<Category>().HasData(new Category
             {
                 CategoryId = 1,
                 CategoryName = "Carnivornes",
                 CategoryDescription = "Meat eating dinosaur",
             });
-            modelBuilder.Entity<Category>().HasData(new Category
+            builder.Entity<Category>().HasData(new Category
             {
                 CategoryId = 2,
                 CategoryName = "Herbivores",
                 CategoryDescription = "Plant eating dinosaur",
             });
-            modelBuilder.Entity<Category>().HasData(new Category
+            builder.Entity<Category>().HasData(new Category
             {
                 CategoryId = 3,
                 CategoryName = "Omnivores",
                 CategoryDescription = "Meat and plants eating dinosaur",
             });
 
-            modelBuilder.Entity<Dinosaur>().HasData(new Dinosaur
+            builder.Entity<Dinosaur>().HasData(new Dinosaur
             {
                 DinosaurId = 1,
                 Name = "Allosaurus",
@@ -89,7 +91,7 @@ namespace DinosaursShop.Models
                 IsInStock = true,
                 IsOnSale = false,
             });
-            modelBuilder.Entity<Dinosaur>().HasData(new Dinosaur
+            builder.Entity<Dinosaur>().HasData(new Dinosaur
             {
                 DinosaurId = 2,
                 Name = "Nomingia",
@@ -103,7 +105,7 @@ namespace DinosaursShop.Models
                 IsInStock = true,
                 IsOnSale = false,
             });
-            modelBuilder.Entity<Dinosaur>().HasData(new Dinosaur
+            builder.Entity<Dinosaur>().HasData(new Dinosaur
             {
                 DinosaurId = 3,
                 Name = "Velociraptor",
@@ -119,7 +121,7 @@ namespace DinosaursShop.Models
                 IsInStock = true,
                 IsOnSale = true,
             });
-            modelBuilder.Entity<Dinosaur>().HasData(new Dinosaur
+            builder.Entity<Dinosaur>().HasData(new Dinosaur
             {
                 DinosaurId = 4,
                 Name = "Eoraptor",
@@ -132,7 +134,7 @@ namespace DinosaursShop.Models
                 IsInStock = true,
                 IsOnSale = true,
             });
-            modelBuilder.Entity<Dinosaur>().HasData(new Dinosaur
+            builder.Entity<Dinosaur>().HasData(new Dinosaur
             {
                 DinosaurId = 5,
                 Name = "Triceratops",
@@ -146,7 +148,7 @@ namespace DinosaursShop.Models
                 IsInStock = true,
                 IsOnSale = true,
             });
-            modelBuilder.Entity<Dinosaur>().HasData(new Dinosaur
+            builder.Entity<Dinosaur>().HasData(new Dinosaur
             {
                 DinosaurId = 6,
                 Name = "Brachiosaurus",

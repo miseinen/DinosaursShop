@@ -1,4 +1,5 @@
 ﻿using DinosaursShop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DinosaursShop.Controllers
@@ -6,6 +7,7 @@ namespace DinosaursShop.Controllers
     /// <summary>
     /// Represents methods to work with order information.
     /// </summary>
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly IOrderRepository orderRepository;

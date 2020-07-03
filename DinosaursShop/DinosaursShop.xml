@@ -209,6 +209,24 @@
             </summary>
             <param name="migrationBuilder">Migration builder.</param>
         </member>
+        <member name="T:DinosaursShop.Migrations.AddingIdentity">
+            <summary>
+            Represents details of performing the migration.
+            </summary>
+        </member>
+        <member name="M:DinosaursShop.Migrations.AddingIdentity.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            Upgrade database from current state to the state expected by current code migration.
+            </summary>
+            <param name="migrationBuilder">Migration builder.</param>
+        </member>
+        <member name="M:DinosaursShop.Migrations.AddingIdentity.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            Remove all the changes from the current migration and revert database to the state expected
+            by the previous migration.
+            </summary>
+            <param name="migrationBuilder">Migration builder.</param>
+        </member>
         <member name="T:DinosaursShop.Models.AppDbContext">
             <summary>
             Represents a session with the database.
@@ -249,7 +267,7 @@
             <summary>
             Call when app context is first created to build the model and its mappings in memory.
             </summary>
-            <param name="modelBuilder">Model builder.</param>
+            <param name="builder">Model builder.</param>
         </member>
         <member name="T:DinosaursShop.Models.Category">
             <summary>
