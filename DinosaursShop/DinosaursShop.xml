@@ -155,6 +155,12 @@
             <param name="dinosaurId">Dinosaur id.</param>
             <returns>Redirect to action result.</returns>
         </member>
+        <member name="M:DinosaursShop.Controllers.ShoppingCartController.ClearCart">
+            <summary>
+            Remove all dinosaurs from the cart.
+            </summary>
+            <returns>Redirect to action result.</returns>
+        </member>
         <member name="T:DinosaursShop.Migrations.InitialMigration">
             <summary>
             Represents details of performing the migration.

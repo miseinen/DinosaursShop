@@ -80,5 +80,16 @@ namespace DinosaursShop.Controllers
 
             return this.RedirectToAction(DefaultActionName);
         }
+
+        /// <summary>
+        /// Remove all dinosaurs from the cart.
+        /// </summary>
+        /// <returns>Redirect to action result.</returns>
+        public RedirectToActionResult ClearCart()
+        {
+            this.shoppingCart.ClearCart();
+
+            return this.RedirectToAction(DefaultActionName);
+        }
     }
 }

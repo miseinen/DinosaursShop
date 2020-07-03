@@ -4,8 +4,8 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>Selected amount</th>
             <th>Dinosaur</th>
+            <th>Selected amount</th>
             <th class="text-right">Price</th>
             <th class="text-right">Subtotal</th>
         </tr>
@@ -14,8 +14,22 @@
         @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
         {
         <tr>
-            <td class="text-center">@item.Amount</td>
             <td class="text-left">@item.Dinosaur.Name</td>
+            <td class="text-center">
+                <a class="btn btn-primary pull-left"
+                        asp-controller="ShoppingCart"
+                        asp-action="RemoveFromShoppingCart"
+                        asp-route-dinosaurId="@item.Dinosaur.DinosaurId">
+                    <b>-</b>
+                </a>
+                @item.Amount
+                <a class="btn btn-primary pull-right"
+                        asp-controller="ShoppingCart"
+                        asp-action="AddToShoppingCart"
+                        asp-route-dinosaurId="@item.Dinosaur.DinosaurId">
+                    <b>+</b>
+                </a>
+            </td>
             <td class="text-right">@item.Dinosaur.Price.ToString("c")</td>
             <td class="text-right">@((item.Amount * item.Dinosaur.Price).ToString("c"))</td>
         </tr>
@@ -30,5 +44,6 @@
 </table>
 
 <div class="text-center">
+    <a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="ClearCart">Clear Cart</a>
     <a class="btn btn-primary" asp-controller="Order" asp-action="Checkout">Checkout</a>
 </div>
